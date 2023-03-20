@@ -8,16 +8,19 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/night.css">
 
-		<!-- Theme used for syntax highlighted code -->
+		<!-- Theme used for syntax highlighted code, fine more at https://highlightjs.org/static/demo/ -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section data-markdown="slides_gl.md"
+						 data-separator-vertical="^\n\n"
+						 data-background-image="background.png"
+						 data-background-size="35%"
+						 data-background-position="bottom 0px right 0px"/>
 			</div>
 		</div>
 
@@ -31,7 +34,9 @@
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
-
+				width: 1200,
+				showSlideNumber: 'speaker',
+				slideNumber: 'c/t',
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
