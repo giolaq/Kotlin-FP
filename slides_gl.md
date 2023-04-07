@@ -10,49 +10,57 @@ $> whoami
 - 15+ years as a C++/Java Software Engineer
 - 6+ as Android Developer
 ```
+Note:
+ - Hi, I'm Giovanni Laquidara
+ - I'm developer advocate for the Amazon Appstore Game And Services
+ - And this does not means that I'm a marketer
+ - Before I spent a lot of years as a C++/Java Engineer, and 6+ years
+ - Developing on Android, with Java and Kotlin
 ---
 ### Unlocking the Power of Functional Programming in Kotlin
 
 #### Styles of Programming
-- Imperative:  What to do and how!
-- Declarative: What to do!
-- Functional?
+- Imperative:  What to do and how! <!-- .element: class="fragment" data-fragment-index="1" -->
+- Declarative: What to do! <!-- .element: class="fragment" data-fragment-index="2" -->
+- Functional? <!-- .element: class="fragment" data-fragment-index="3" -->
 
 Note:
+- Let's do an intro about the different style of programming
 - Imperative programming is a programming paradigm that focuses on describing how a program should accomplish a task, step by step. In imperative programming, the state of the program changes over time as it executes.
 - Declarative programming is a programming paradigm that emphasizes expressing the logic of a program without describing the control flow. In declarative programming, the programmer specifies what the program should do, rather than how to do it.
-- 
+- What about functional programming?
 ---
 ### Functional programming
-Declarative + high order function
+Declarative + high order function <!-- .element: class="fragment" data-fragment-index="2" -->
 
-**High order function**
-Take a function as a parameter, return a function, create function inside
+**High order function** <!-- .element: class="fragment" data-fragment-index="3" -->
+- Take a function as a parameter and/or return a function <!-- .element: class="fragment" data-fragment-index="3" -->
 
-```kotlin
-
-fun performOperation(x: Int, operation: (Int) -> Int): Int {
+<pre class="fragment" data-fragment-index="4"><code class="kotlin">fun performOperation(x: Int, operation: (Int) -> Int): Int {
     return operation(x)
 }
 
 fun square(x: Int): Int {
     return x * x
 }
+
 val result = performOperation(5, ::square)
-```
-> Functional composition power!!!
+</code></pre>
+
+Functional composition power!!! <!-- .element: class="fragment" data-fragment-index="5" -->
 
 Note:
-- Declarative programming emphasizes the manipulation of data and expressing relationships between data elements, while functional programming emphasizes the use of functions and defining the flow of control.
-- Functional programming is a programming paradigm that emphasizes the use of pure functions and immutable data to solve problems. In functional programming, functions are treated as first-class citizens and can be passed around like any other data type.
+- In functional programming, functions are treated as first-class citizens and can be passed around like any other data type.
+- Functional programming is Declarative programming + high order functions
+- What's an high order function?
 ---
 ### Functional programming languages
 
-- Higher-order functions
-- Pure functions
-- Immutable data structures
-- Recursion
-- Lazy evaluation
+- Higher-order functions <!-- .element: class="fragment" data-fragment-index="1" -->
+- Pure functions <!-- .element: class="fragment" data-fragment-index="2" -->
+- Immutable data structures <!-- .element: class="fragment" data-fragment-index="3" -->
+- Recursion <!-- .element: class="fragment" data-fragment-index="4" -->
+- Lazy evaluation <!-- .element: class="fragment" data-fragment-index="5" -->
 
 Note:
 - A functional programming language is a type of programming language that emphasizes the use of functions to express computations and data transformations. Functional programming languages typically treat functions as first-class citizens, meaning that they can be treated like any other value or data type in the language.
@@ -75,9 +83,9 @@ Examples of functional programming languages include Haskell, Lisp, ML, OCaml, a
 
 ### Is Kotlin an object-oriented language or a functional one?
 
-https://kotlinlang.org/docs/faq.html#is-kotlin-an-object-oriented-language-or-a-functional-one
+https://kotlinlang.org/docs/faq.html#is-kotlin-an-object-oriented-language-or-a-functional-one <!-- .element: class="fragment" data-fragment-index="1" -->
 
-> Kotlin has both object-oriented and functional constructs. You can use it in both OO and FP styles, or mix elements of the two. With first-class support for features such as higher-order functions, function types and lambdas, Kotlin is a great choice if you're doing or exploring functional programming.
+Kotlin has both object-oriented and functional constructs. You can use it in both OO and FP styles, or mix elements of the two. With first-class support for features such as higher-order functions, function types and lambdas, Kotlin is a great choice if you're doing or exploring functional programming. <!-- .element: class="fragment" data-fragment-index="1" -->
 
 ---
 ### 
@@ -102,14 +110,13 @@ fun greaterThan10(products: List<Product>): Map<String, Double> {
 ---
 ```kotlin
 fun main() {
-
   val productList = listOf(
           Product("1", 10.0, 2.0),
           Product("2", 5.0, 3.0),
           Product("3", 12.0, 0.0),
           Product("4", 1.0, 5.0),
           Product("5", 20.0, 10.0))
-
+  
   println(greaterThan10(productList))
 }
 ```
@@ -126,7 +133,6 @@ fun greaterThan10(products: List<Product>): Map<String, Double> =
 ---
 ```kotlin
 fun main() {
-
   val productList = listOf(
           Product("1", 10.0, 2.0),
           Product("2", 5.0, 3.0),
@@ -141,53 +147,47 @@ fun main() {
 {1=12.0, 3=12.0, 5=30.0}
 ```
 ---
-## How to pass a function to a function?
-- Lambda expression  ( Non local return ! ( outside of the container function ) because of inline or use return label)
-- Anonymous function ( Local return if not inline, return type specified)
-- Function reference ()
-
-```kotlin
-val numbers = listOf(1, 2, 3, 4, 5)
+## Function as a parameter?
+Lambda expression <!-- .element: class="fragment" data-fragment-index="2" -->
+<pre class="fragment" data-fragment-index="2"><code class="kotlin">val numbers = listOf(1, 2, 3, 4, 5)
 val result = numbers.reduce { acc, i -> acc + i }
-```
-```kotlin
-val result = numbers.reduce(fun(acc, i): Int {
+</code></pre>
+Anonymous function <!-- .element: class="fragment" data-fragment-index="3" -->
+<pre class="fragment" data-fragment-index="3"><code class="kotlin">val result = numbers.reduce(fun(acc, i): Int {
   return acc + i
 })
-```
-```kotlin
-fun sum(a: Int, b: Int) = a + b
+</code></pre>
+Function reference <!-- .element: class="fragment" data-fragment-index="4" -->
+<pre class="fragment" data-fragment-index="4"><code class="kotlin">fun sum(a: Int, b: Int) = a + b
 val result = numbers.reduce(::sum)
-```
-
+</code></pre>
 Note:
 - in Kotlin, functions are first-class citizens, which means they can be assigned to variables, passed as arguments to other functions, and returned as values from functions. This opens up the possibility of using higher-order functions, which are functions that take other functions as arguments or return functions as results. Lambda expressions are a concise way to define anonymous functions, which can be used as arguments to higher-order functions."
 - Lambda functions are defined using the "->" syntax, the returned type is Inferred
 - Anonymous functions are another way to define functions in Kotlin. They are similar to lambda functions, but they use the fun keyword instead of the -> syntax
 - With the anonymous function you can specify the type of the returned value, something that you cannot do with the lambda functions, as this will be deduced by the type inference.
-- Finally, function references allow you to refer to an existing function by name, without having to define a new function
+- Double colon, Finally, function references allow you to refer to an existing function by name, without having to define a new function
 - Another difference between lambda expressions and anonymous functions is the behavior of non-local returns. A return statement without a label always returns from the function declared with the fun keyword. This means that a return inside a lambda expression will return from the enclosing function, whereas a return inside an anonymous function will return from the anonymous function itself.
 ---
 ## Local/Non Local Return
 
-
-```kotlin
+```kotlin [4-7|10-13]
 fun main() {
     val numbers = listOf(1, 2, 3, 4, 5)
     // Example of a lambda function with non-local return
     val lambdaResult = numbers.map {
-        if (it == 3) return@map "three"
+        if (it == 3) return
         else it.toString()
     }
-    println("Lambda function result: $lambdaResult") // Prints [1, 2, three, 4, 5]
-
+  // Prints [1, 2, three, 4, 5]
+  println("Lambda function result: $lambdaResult")
     // Example of an anonymous function with local return
     val anonymousResult = numbers.map(fun(num): String {
         if (num == 3) return "three"
         else return num.toString()
     })
-    println("Anonymous function result: $anonymousResult") // Prints [1, 2, three, 4, 5]
-
+  // Prints [1, 2, three, 4, 5]
+  println("Anonymous function result: $anonymousResult") 
 }
 ```
 Note:
@@ -265,12 +265,12 @@ Note:
 ---
 
 ### Immutability
->Data cannot be changed once it is created
+Data cannot be changed once it is created <!-- .element: class="fragment" data-fragment-index="1" -->
 
-Benefits:
-- Predictable behavior
-- Thread safety
-- Improved performance
+Benefits: <!-- .element: class="fragment" data-fragment-index="2" -->
+- Predictable behavior <!-- .element: class="fragment" data-fragment-index="3" -->
+- Thread safety <!-- .element: class="fragment" data-fragment-index="4" -->
+- Improved performance <!-- .element: class="fragment" data-fragment-index="5" -->
 
 ---
 ### Immutability in Kotlin
@@ -280,9 +280,6 @@ data class UserInfo(val name: String, val address: String)
 
 val value = "I'm immutable"
 ```
-
-> val != const val
-
 
 Note:
 -  Compared to mutable states we are familiar with–such as a variable that can be reassigned to any values or an array that we can insert or remove any values during runtime–immutable states are not modifiable after they have been created or assigned a value.
@@ -309,34 +306,33 @@ Note:
 
 - By incorporating immutability into your functional programming codebase, you can take advantage of the many benefits that this concept has to offer. By using immutable data structures and variables, you can create code that is more concise, readable, and maintainable, and that is less prone to bugs and errors.
 ---
-### Val can be always different
+### Val means read only
 ```kotlin
+const val iAmConstant = "compile type constant"
+
 class Circle(val radius: Double) {
     val circumference: Double
         get() = 2 * Math.PI * radius
 }
 
 fun main() {
-    val circle = Circle(3.0)
-    println("Circumference of circle with radius ${circle.radius}: ${circle.circumference}") // Prints "Circumference of circle with radius 3.0: 18.84955592153876"
-    
-    circle.radius = 5.0 // Compilation error: "Val cannot be reassigned"
-    
-    var mutableCircle = Circle(3.0)
-    mutableCircle.radius = 5.0
-    println("Circumference of mutable circle with radius ${mutableCircle.radius}: ${mutableCircle.circumference}") // Prints "Circumference of mutable circle with radius 5.0: 31.41592653589793"
-}
+  val circle = Circle(3.0)
+  circle.radius = 5.0 // Compilation error: "Val cannot be reassigned"
 
+  var mutableCircle = Circle(3.0)
+  mutableCircle.radius = 5.0 // Compilation error: "Val cannot be reassigned"
+}
 ```
 ---
 ### Recursion
+
 ```kotlin
 fun factorial(n: Int): Int {
-    if (n == 0) {
-        return 1
-    } else {
-        return n * factorial(n - 1)
-    }
+  return if (n == 0) {
+    1
+  } else {
+    n * factorial(n - 1)
+  }
 }
 ```
 ---
@@ -353,7 +349,7 @@ tailrec fun sum(n: Int, acc: Int = 0): Int {
 ```
 
 Note:
-- a
+- Kotlin supports a style of functional programming known as tail recursion. For some algorithms that would normally use loops, you can use a recursive function instead without the risk of stack overflow. When a function is marked with the tailrec modifier and meets the required formal conditions, the compiler optimizes out the recursion, leaving behind a fast and efficient loop based version instead:
 ---
 ### Lazy Evaluation
 Don't evaluate a function or expression until you actually need its result
@@ -433,10 +429,9 @@ Note:
 ```kotlin
 class Result(val value: String = "", val e: Boolean = false)
 
-
 fun someProcessing(data: String): Result {
-    return if (data.isEmpty()) {
-        Result("OK")
+    return if (data.isCorrect()) {
+        Result("elaboratedData")
     } else {
         Result(e = true)
     }
@@ -470,11 +465,17 @@ Note:
 ---
 ### Functors in Kotlin
 
-```kotlin
+```kotlin [1-6|7-12]
 class Functor<T>(val value: T) {
-  fun map(function: (T) -> T): Functor<T> {
-    return Functor(function(value))
+  fun <R> map(transform: (T) -> R): Functor<R> {
+    val result = transform(value)
+    return Functor(result)
   }
+}
+fun main() {
+  val original = Functor(5)
+  val transformed = original.map { it * 2 }
+  println(transformed)
 }
 ```
 ---
@@ -485,38 +486,59 @@ Replace for loop for collections
 
 ---
 ### Functors Handling Errors
-```kotlin
-sealed class Either<out L, out R> {
-    data class Left<out L>(val value: L) : Either<L, Nothing>()
-    data class Right<out R>(val value: R) : Either<Nothing, R>()
+```kotlin [1-9|10-14]
+sealed class Either<L, R> {
+  class Left<L, R>(val l: L) : Either<L, R>() {
+    override fun toString(): String = "Left $l"
+  }
 
-    fun <T> map(f: (R) -> T): Either<L, T> = when (this) {
-        is Left -> this
-        is Right -> Right(f(value))
+  class Right<L, R>(val r: R) : Either<L, R>() {
+    override fun toString(): String = "Right $r"
+  }
+
+  fun <Rp> map(f: (R) -> (Rp)): Either<L, Rp> {
+    return when (this) {
+      is Either.Left<L, R> -> Left(this.l)
+      is Either.Right<L, R> -> Right(f(this.r))
     }
+  }
 }
-
+```
+---
+```kotlin
 fun divide(a: Int, b: Int): Either<String, Double> =
-    if (b == 0) Either.Left("Cannot divide by zero")
-    else Either.Right(a.toDouble() / b)
+        if (b == 0) Either.Left("Cannot divide by zero")
+        else Either.Right(a.toDouble() / b)
 
 fun main() {
-    val result1 = divide(4, 2).map { it * 2 }
-    val result2 = divide(4, 0).map { it * 2 }
-    println(result1) // prints "Right(4.0)"
-    println(result2) // prints "Left(Cannot divide by zero)"
+  val result1 = divide(4, 2).map { it * 2 }
+  val result2 = divide(4, 0).map { it * 2 }
+  val result3 = divide(3, 1).map { it * 2 }.map { it * 2 }
+  println(result1) // prints "Right(4.0)"
+  println(result2) // prints "Left(Cannot divide by zero)"
+  println(result3) // prints "Right(12.0)"
 }
 
 ```
 ---
+### What if?
+
+- The function we want to pass to map returns a Functor too?
+
+The result will be something like
+
+<a>```Functor<A>(Functor<B>) ```</a>
+
+and so on
+
+...We need a way to flatten the data.
+---
 ### Monads
 Monads apply a function that returns a wrapped value to a wrapped value.
 
-A monad is a functor type that defines a
-
 ***flatMap***
 
-![](images/monad.png) <!-- .element width="400px" -->
+![](images/monad-example.jpg) <!-- .element width="500px" -->
 
 Note:
 - Use this https://www.youtube.com/watch?v=tiXe1XiuqB0
@@ -524,43 +546,50 @@ Note:
 ---
 ### Monads in Kotlin
 ```kotlin
-fun <B> flatMap(f: (A) -> Either<E, B>): Either<E, B> = when (this) {
-  is Left -> this
-  is Right -> f(value)
+sealed class Either<L, R> {
+  class Left<L, R>(val l: L) : Either<L, R>() {
+    override fun toString(): String = "Left $l"
+  }
+
+  class Right<L, R>(val r: R) : Either<L, R>() {
+    override fun toString(): String = "Right $r"
+  }
+
+  fun <Rp> map(f: (R) -> (Rp)): Either<L, Rp> {
+    return when (this) {
+      is Either.Left<L, R> -> Left(this.l)
+      is Either.Right<L, R> -> Right(f(this.r))
+    }
+  }
+
+  fun <Rp> flatMap(f: (R) -> (Either<L, Rp>)): Either<L, Rp> {
+    return when (this) {
+      is Either.Left<L, R> -> Left(this.l)
+      is Either.Right<L, R> -> f(this.r)
+    }
+  }
 }
 ```
 Note:
 - Monads are a way to encapsulate and chain computations in a structured and predictable way.
 - The flatMap function takes a function that returns a new Either, and returns a new Either with the same error value and the success value of the returned Either.
-- 
-### Applicatives
-
-![](images/applicatives.webp)
-
-
-Note:
-- An applicative functor is a specific type of functor that allows you to apply a function that takes multiple arguments to wrapped values. In other words, an applicative functor allows you to apply a function that has two or more arguments to two or more values that are wrapped in a container.
-- Applicatives are a third concept in functional programming that build on top of functors and monads. An applicative is a container or wrapper around a function that provides a way to apply that function to multiple values at once. Applicatives can be used to model many types of computations, including parallel and concurrent programming."
+-
 ---
-### Applicatives in Kotlin
 ```kotlin
-fun<T, S> Functor<(T) -> S>.apply(f: Functor<T>): Functor<S> = when(this) {
-    is Nothing -> this
-    is Something -> f.map(this.value)
+fun divide(a: Int, b: Int): Either<String, Double> =
+        if (b == 0) Either.Left("Cannot divide by zero")
+        else Either.Right(a.toDouble() / b)
+
+fun main() {
+  val result1 = divide(4, 2).map { it * 2 }
+  val result2 = divide(4, 0).map { it * 2 }
+  val result3 = divide(3, 1).map { it * 2 }.map { it * 2 }
+  val result4 = divide(4, 2).flatMap { divide(4, 1) }
+  println(result1) // prints "Right(4.0)"
+  println(result2) // prints "Left(Cannot divide by zero)"
+  println(result3)  println(result3) // prints "Right(12.0)"
+  println(result4) // prints "Left(Cannot divide by zero)"
 }
-```
-Note:
-- Here's an example of using the List applicative in Kotlin. The List applicative is a way to model computations that operate on multiple values at once, by wrapping the result in a list of possible outcomes. By applying a function to multiple values using the map and ap functions, we can perform operations on all the values while maintaining the context of all possible outcomes.
----
-### Applicatives in Kotlin
-```kotlin
-fun add3() = { a: Int -> a + 3 }
-
-val wrappedFunction = Functor.Something(add3())
-val wrappedValue = Functor.Something(2)
-
-
-val result = wrappedValue.apply() //Something(5)
 ```
 ---
 ### Arrow
@@ -671,16 +700,15 @@ runCatching { Instant.parse(date) }
     .map { OffsetDateTime.ofInstant(it, ZoneOffset.UTC) }
 
 val date:Instant = runCatching { Instant.parse(date) }.getOrDefault(Instant.now())
-
-val date:Instant = runCatching { Instant.parse(date) }.getOrDefault(Instant.now())
 ```
 ---
 ### Functional Vs OO
+- Functions vs objects 
+- Concise and Expressive VS Modular and Scalable
 
-- Functions vs objects
-- Concise and Expressive vs Modular and Scalable
-- Immutability and side effects free vs Encapsulation and Abstraction
-- Complexity delegated to compiler vs to developer
+- Immutability and side effects free VS Encapsulation and Abstraction
+
+- Complexity delegated to compiler VS to developer
 
 
 Note:
@@ -700,3 +728,4 @@ Note:
 - Ultimately, the choice of programming paradigm depends on the specific requirements of the project and the preferences and skillsets of the development team.
 ---
 ## Questions?
+
